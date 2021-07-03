@@ -2,28 +2,28 @@ function HashStorageFunc(key, value) {
     let obj = {};
     this.key = key;
     this.value = value;
-    
-    this.addValue = function(key,value) {
+
+    this.addValue = function (key, value) {
         obj[key] = value;
     }
-    
-    this.getValue = function(key) {
-        if(key) {
+
+    this.getValue = function (key) {
+        if (key) {
             return obj[key];
         } else {
             return undefined;
         }
     }
-     
-    this.deleteValue = function(key){
-        if(delete obj[key]) {
+
+    this.deleteValue = function (key) {
+        if (delete obj[key]) {
             return true;
         } return false;
     }
-        
-    this.getKeys = function() {
-       for(var key in obj)
-       return Object.keys(obj);
+
+    this.getKeys = function () {
+        for (var key in obj)
+            return Object.keys(obj);
     }
 }
 
@@ -44,10 +44,7 @@ function isDrink() {
 
 function getInfo() {
     var nameInfo = prompt("Введите название напитка", "Маргарита");
-    console.log(drinkStorage.getValue(nameInfo));
-    // здесь не выполняется условие задачи , выдать на страницу информацию в определенном формате или информацию о том что такокго напитка нет
-    //это необходимо сделать через if если функция равна ??? или как
-   
+    alert(drinkStorage.getValue(nameInfo));
 }
 
 function deleteDrink() {
@@ -55,6 +52,6 @@ function deleteDrink() {
     drinkStorage.deleteValue(keysN)
 }
 
-function getAllKeys(){
-    console.log(drinkStorage.getKeys());
+function getAllKeys() {
+    alert(drinkStorage.getKeys());
 }
