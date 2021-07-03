@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: stretch;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button{
+            width: 190px;
+            height: 60px;
+            color: rgb(136, 207, 136);
+            font-size: 15px;
+            background-color: rgb(130, 130, 177);
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            margin: 12px;
+        }
+        button:hover{
+            cursor: pointer;
+            color: blue;
+            background-color: rgb(130 130 177 / 76%);
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <button onclick="isDrink()">ввод информации о напитке</button>
+        <button onclick="getInfo()">получение информации о напитке</button>
+        <button onclick="deleteDrink()">удаление информации о напитке</button>
+        <button onclick="getAllKeys()">перечень всех напитков</button>
+    </div>
+
+
+    <script src="DRINK_HASH_FUNC.js"></script>
+</body>
+</html>
