@@ -1,57 +1,68 @@
-function HashStorageFunc(key, value) {
-    let obj = {};
-    this.key = key;
-    this.value = value;
-
-    this.addValue = function (key, value) {
-        obj[key] = value;
+class HashStorageClass {
+    obj
+    constructor() {
+        this.obj = {};
     }
 
-    this.getValue = function (key) {
+    addValue(key, value) {
+        this.obj[key] = value;
+    }
+
+    getValue(key) {
         if (key) {
-            return obj[key];
+            return this.obj[key];
         } else {
             return undefined;
         }
     }
 
-    this.deleteValue = function (key) {
-        if (delete obj[key]) {
-            return true;
-        } return false;
+    deleteValue(key) {
+        for (let elem in this.obj) {
+            if (elem === key) {
+                delete this.obj[key];
+                return alert("Напиток удален из списка");
+            } else {
+                return alert("Вы не удалили напиток");
+            }
+        }
     }
 
-    this.getKeys = function () {
-        for (var key in obj)
-            return Object.keys(obj);
+    getKeys() {
+        return Object.keys(this.obj);
     }
+
 }
 
-var drinkStorage = new HashStorageFunc();
+let drinkStorage = new HashStorageClass();
 
-var drink = "";
-var alcohol = "";
-var description = "";
-var result = "";
+let btn1 = document.querySelector('#btn-1');
+let btn2 = document.querySelector('#btn-2');
+let btn3 = document.querySelector('#btn-3');
+let btn4 = document.querySelector('#btn-4');
 
-function isDrink() {
+let drink = "";
+let alcohol = "";
+let description = "";
+let result = [];
+
+btn1.addEventListener('click', function () {
     drink = prompt("Введите название напитка", "Маргарита");
-    alcohol = prompt("Введите, напиток алкогольный или безалкогольный", "да");
-    description = prompt("Введите рецепт приготовления", "смешать ");
+    alcohol = prompt("Введите, напиток алкогольный или безалкогольный", "алкогольный напиток");
+    description = prompt("Введите рецепт приготовления", "необходимо смешать водку с томатным соком");
     result = [alcohol, description];
-    drinkStorage.addValue(drink, result)
-}
+    drinkStorage.addValue(drink, result);
+})
 
-function getInfo() {
-    var nameInfo = prompt("Введите название напитка", "Маргарита");
+btn2.addEventListener('click', function () {
+    let nameInfo = prompt("Введите название напитка", "Маргарита");
     alert(drinkStorage.getValue(nameInfo));
-}
+})
 
-function deleteDrink() {
-    var keysN = prompt("Какой удалить напиток?")
-    drinkStorage.deleteValue(keysN)
-}
+btn3.addEventListener('click', function () {
+    var keysN = prompt("Какой удалить напиток?", "Маргарита");
+    drinkStorage.deleteValue(keysN);
+})
 
-function getAllKeys() {
+btn4.addEventListener('click', function () {
     alert(drinkStorage.getKeys());
-}
+})
